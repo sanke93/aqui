@@ -16,7 +16,7 @@ angular.module('ionicParseApp.controllers', [])
 })
 
 .controller('HomeController', function ($scope, $state, $rootScope) {
-
+    console.log("home controller");
 })
 
 .controller('LoginController', function ($scope, $state, $rootScope,
@@ -186,7 +186,7 @@ angular.module('ionicParseApp.controllers', [])
 
     console.log("home");
     $scope.here = function(){
-        $state.go('friends');
+        $state.go('main.friends', {clear: true});
         console.log("got friend");
     }
 })
@@ -199,8 +199,20 @@ angular.module('ionicParseApp.controllers', [])
     }
 
     $scope.user = $rootScope.user;  
-
-    console.log($scope.user.attributes.friends);
+    var user = Parse.User.current();
+    var relation = user.relation("friends");
+    relation.query().find({
+      success: function(list) {
+        $scope.friends = list;
+        console.log("hi", $scope.friends);
+      },
+      error: function(myObject, error) {
+            console.log(myObject, error);
+        }
+    });
+    //$scope.friends1="hi";
+    console.log("friends controller");
+    //console.log($scope.user.attributes.friends);
 
     $scope.logout = function () {
         Parse.User.logOut();
