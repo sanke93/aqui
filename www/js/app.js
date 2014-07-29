@@ -45,6 +45,12 @@ angular.module('ionicParseApp',
                 controller: 'LoginController'
             })
 
+            .state('friends', {
+                url: '/friends',
+                templateUrl: 'templates/friends.html',
+                controller: 'FriendsController'
+            })
+
             .state('forgot', {
                 url: '/forgot',
                 templateUrl: 'templates/forgotPassword.html',

@@ -15,7 +15,7 @@ angular.module('ionicParseApp.controllers', [])
     };
 })
 
-.controller('HomeController', function ($scope) {
+.controller('HomeController', function ($scope, $state, $rootScope) {
 
 })
 
@@ -172,6 +172,34 @@ angular.module('ionicParseApp.controllers', [])
             }
         }
     ];
+
+    $scope.logout = function () {
+        Parse.User.logOut();
+        $rootScope.user = null;
+        $state.go('welcome', {clear: true});
+    };
+
+    $scope.toggleMenu = function() {
+        $scope.sideMenuController.toggleRight();
+    };
+
+    console.log("home");
+    $scope.here = function(){
+        $state.go('friends');
+        console.log("got friend");
+    }
+})
+
+
+.controller('FriendsController', function ($scope, $state, $rootScope,
+                                        $stateParams, $ionicViewService) {
+    if ($stateParams.clear) {
+        $ionicViewService.clearHistory();
+    }
+
+    $scope.user = $rootScope.user;  
+
+    console.log($scope.user.attributes.friends);
 
     $scope.logout = function () {
         Parse.User.logOut();
