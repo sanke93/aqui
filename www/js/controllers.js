@@ -180,6 +180,7 @@ angular.module('ionicParseApp.controllers', [])
     };
 
     $scope.toggleMenu = function() {
+        console.log('toggling')
         $scope.sideMenuController.toggleRight();
     };
 
