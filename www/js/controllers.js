@@ -113,7 +113,8 @@ angular.module('ionicParseApp.controllers', [])
     $scope.register = function () {
 
         // TODO: add age verification step
-
+        var defaultLeavingMsg = "I'm leaving."
+        var defaultHereMsg = "I'm here."
         $scope.loading = $ionicLoading.show({
             content: 'Sending',
             animation: 'fade-in',
@@ -123,9 +124,12 @@ angular.module('ionicParseApp.controllers', [])
         });
 
         var user = new Parse.User();
-        user.set("username", $scope.user.email);
+        user.set("username", $scope.user.username);
         user.set("password", $scope.user.password);
-        user.set("email", $scope.user.email);
+        // user.set("email", $scope.user.email);
+        user.set("leavingMsg", defaultLeavingMsg)
+        user.set("hereMsg", defaultHereMsg)
+
 
         user.signUp(null, {
             success: function(user) {
@@ -142,6 +146,7 @@ angular.module('ionicParseApp.controllers', [])
                     $scope.error.message = 'The email address is already ' +
                         'registered';
                 } else {
+                    console.log('here', error.message)
                     $scope.error.message = error.message;
                 }
                 $scope.$apply();
@@ -155,6 +160,8 @@ angular.module('ionicParseApp.controllers', [])
     if ($stateParams.clear) {
         $ionicViewService.clearHistory();
     }
+
+    $scope.user = $rootScope.user;  
 
     $scope.rightButtons = [
         {
