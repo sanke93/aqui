@@ -1,5 +1,5 @@
 <!-- ion-view here is a directive (just an insight) -->
-<ion-view title="'Aqui'" right-buttons="rightButtons">
+
     <ion-content has-header="true" has-tabs="true" padding="true">
         
     	<button class="button button-block button-energized">
@@ -10,8 +10,13 @@
     		{{user.attributes.hereMsg}}
     	</button>
 
-    	<button class="button button-stable">
-  			Edit Messages
-		</button>
+    	<div class='row'>
+    		<div class="col col-80">
+    		</div>
+    		<div class="col col-20">
+    			<button class="button icon ion-gear-a" ng-click='toggleMenu()'></button>
+			</div>
+		</div>
+
 	</ion-content>
-</ion-view>
+
