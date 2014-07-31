@@ -9,7 +9,9 @@
     	<button class="button button-block button-assertive" ng-click="here()">
     		{{user.attributes.hereMsg}}
     	</button>
-
+        <button class="button button-full button-energized" ng-repeat="friend in friends">
+            {{friend.attributes.username}}
+        </button>   
     	<div class='row'>
     		<div class="col col-80">
     		</div>

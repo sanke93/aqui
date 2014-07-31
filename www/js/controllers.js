@@ -186,9 +186,21 @@ angular.module('ionicParseApp.controllers', [])
 
     console.log("home");
     $scope.here = function(){
-        $state.go('main.friends', {clear: true});
+        $state.go('friends', {clear: true});
         console.log("got friend");
     }
+
+    var user = Parse.User.current();
+    var relation = user.relation("friends");
+    relation.query().find({
+      success: function(list) {
+        $scope.friends = list;
+        console.log("main", $scope.friends);
+      },
+      error: function(myObject, error) {
+            console.log(myObject, error);
+        }
+    });
 })
 
 

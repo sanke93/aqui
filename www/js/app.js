@@ -45,13 +45,10 @@ angular.module('ionicParseApp',
                 controller: 'LoginController'
             })
 
-            .state('main.friends', {
+            .state('friends', {
                 url: '/friends',
-                views: {
-                    'main': {
-                        templateUrl: 'templates/friends.html'
-                    }
-                },
+                
+                        templateUrl: 'templates/friends.html',
                 controller: 'FriendsController'
             })
 

@@ -1,17 +1,17 @@
-<!-- ion-view here is a directive (just an insight) -->
+<ion-view title="'Friends'">
 
-<ion-content has-header="true" has-tabs="true" padding="true">
-	<button class="button button-full button-energized" ng-repeat="friend in friends">
-		{{friend.attributes.username}}
-	</button>	
-	hi
-	<div class='row'>
-		<div class="col col-80">
-		</div>
-		<div class="col col-20">
-			<button class="button icon ion-gear-a" ng-click='toggleMenu()'></button>
-		</div>
-	</div>
+    <ion-content >
+    	<button class="button button-full button-energized" ng-repeat="friend in friends">
+    		{{friend.attributes.username}}
+    	</button>	
+    	
+    <!-- 	<div class='row'>
+    		<div class="col col-80">
+    		</div>
+    		<div class="col col-20">
+    			<button class="button icon ion-gear-a" ng-click='toggleMenu()'></button>
+    		</div>
+    	</div> -->
 
-</ion-content>
-
+    </ion-content>
+</ion-view>
