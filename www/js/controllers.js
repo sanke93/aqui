@@ -15,7 +15,7 @@ angular.module('ionicParseApp.controllers', [])
     };
 })
 
-.controller('HomeController', function ($scope, $state, $rootScope) {
+.controller('HomeController', function ($scope) {
     console.log("home controller");
 })
 
@@ -184,7 +184,6 @@ angular.module('ionicParseApp.controllers', [])
         $scope.sideMenuController.toggleRight();
     };
 
-    console.log("home");
     $scope.here = function(){
         $state.go('friends', {clear: true});
         console.log("got friend");

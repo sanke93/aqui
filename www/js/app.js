@@ -33,10 +33,11 @@ angular.module('ionicParseApp',
                 url: '/home',
                 views: {
                     'main': {
-                        templateUrl: 'templates/home.html'
+                        templateUrl: 'templates/home.html',
+                        controller: 'HomeController'
                     }
                 },
-                controller: 'HomeController'
+                
             })
 
             .state('login', {
