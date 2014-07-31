@@ -16,7 +16,7 @@ angular.module('ionicParseApp.controllers', [])
 })
 
 .controller('HomeController', function ($scope) {
-    console.log("home controller");
+    scope_home = $scope;
 })
 
 .controller('LoginController', function ($scope, $state, $rootScope,
@@ -160,8 +160,22 @@ angular.module('ionicParseApp.controllers', [])
     if ($stateParams.clear) {
         $ionicViewService.clearHistory();
     }
-
+    scope_main = $scope;
     $scope.user = $rootScope.user;  
+
+    var user = Parse.User.current();
+    var relation = user.relation("friends");
+    relation.query().find({
+      success: function(list) {
+        $scope.friends = list;
+        $scope.$apply();
+        console.log("main", $scope.friends);
+      },
+      error: function(myObject, error) {
+            console.log(myObject, error);
+        }
+    }); 
+
 
     $scope.rightButtons = [
         {
@@ -189,17 +203,7 @@ angular.module('ionicParseApp.controllers', [])
         console.log("got friend");
     }
 
-    var user = Parse.User.current();
-    var relation = user.relation("friends");
-    relation.query().find({
-      success: function(list) {
-        $scope.friends = list;
-        console.log("main", $scope.friends);
-      },
-      error: function(myObject, error) {
-            console.log(myObject, error);
-        }
-    });
+    
 })
 
 
