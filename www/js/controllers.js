@@ -189,17 +189,6 @@ angular.module('ionicParseApp.controllers', [])
         console.log("got friend");
     }
 
-    var user = Parse.User.current();
-    var relation = user.relation("friends");
-    relation.query().find({
-      success: function(list) {
-        $scope.friends = list;
-        console.log("main", $scope.friends);
-      },
-      error: function(myObject, error) {
-            console.log(myObject, error);
-        }
-    });
 })
 
 
@@ -212,9 +201,11 @@ angular.module('ionicParseApp.controllers', [])
     $scope.user = $rootScope.user;  
     var user = Parse.User.current();
     var relation = user.relation("friends");
+    console.log("user:", user);
     relation.query().find({
       success: function(list) {
         $scope.friends = list;
+        $scope.$apply();
         console.log("hi", $scope.friends);
       },
       error: function(myObject, error) {
